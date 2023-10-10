@@ -68,7 +68,9 @@
 后台地址：https://yoursite.com/loginasadad.php/login/login
 ~~~
 
+## 版本更新说明
 
+       请查看UPDATE.md
 
 
 ## CDN端请查看FILE_GD_CDN项目的配置教程
