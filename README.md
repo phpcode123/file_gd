@@ -44,7 +44,7 @@
 ~~~
 
 * 伪静态文件目录(只做了Nginx适配)：/file_gd/public/.htaccess  内容复制宝塔配置里即可
-* 后台地址：https://yoursite.com/admin.php/login/login  用户名：admin  密码：admin888
+* 后台地址：https://yoursite.com/admin.php/login/login  用户名：admin  密码：admin888 (默认用户名和密码)
 
 
 
@@ -64,6 +64,8 @@
 2、修改网站配置文件：/file_gd/config/app.php    （admin_path地址必须与步骤1修改的一致）如:
 
 'admin_path'             => 'loginasadad.php',//后台入口文件，防止后台被爆破
+
+后台地址：https://yoursite.com/loginasadad.php/login/login
 ~~~
 
 
