@@ -46,14 +46,14 @@
 * 伪静态文件目录(只做了Nginx适配)：/file_gd/public/.htaccess  内容复制宝塔配置里即可
 * 后台地址：https://yoursite.com/admin.php/login/login  用户名：admin  密码：admin888 (默认用户名和密码)
 
-# 文件监控程序
+# 文件定时清理监控
 
-* 在linux终端切换到FILE_GD目录，执行命令
+* 此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘，天数可自定义：/file_gd/app/command/CleanExpiredFile.php
 
 ~~~
-cd FILE_GD_PATH    //切换到FILE_GD目录
+cd FILE_GD_PATH    //在linux终端切换到FILE_GD目录
 screen -S clean_file   //screen 新建命令行窗口挂载
-php think clean_file   //此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘
+php think clean_file   // 执行监控程序
 CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此窗口查看：screen -r clean_file
 ~~~
 
