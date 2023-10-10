@@ -22,7 +22,7 @@
 * 安装：主程序上传到web，在宝塔面板中绑定好主域名，然后修改/file_gd/config/app.php配置文件 
 ~~~
 
-/file_gd/config/app.php (改大写字母配置部分)
+/file_gd/config/app.php (改大写部分)
 ...
 'install_path'           => '/www/wwwroot/YOUR_SITE_PATH/',  
 'admin_url'              => 'https://YOUR_DOMAIN.COM/', 
