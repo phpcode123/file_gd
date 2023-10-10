@@ -57,10 +57,11 @@
     'admin_password'         => 'YOUR_ADMIN_PASSWORD', //后台密码
 ~~~
 
+
 * 如何更改后台登录地址？
 ~~~
 1、先将/file_gd/public/admin.php admin.php文件命名为自己想要的 如：loginasadad.php
-2、修改网站配置文件：/file_gd/config/app.php    （admin_path地址必须与步骤一修改的一致）如:
+2、修改网站配置文件：/file_gd/config/app.php    （admin_path地址必须与步骤1修改的一致）如:
 
 'admin_path'             => 'loginasadad.php',//后台入口文件，防止后台被爆破
 ~~~
