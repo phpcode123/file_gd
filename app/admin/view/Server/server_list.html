@@ -1,0 +1,87 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">服务器管理 > 服务器列表 <span class="page-pretitle"> (已配置好的服务器项请勿再随意更改) (FileServer:{if $command_status eq 0}<span class="badge bg-red">Stop</span>{else/}Running{/if})</span></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable  table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>edit</th>
+            <th>status</th>
+            <th>disk</th>    
+            <th>command</th> 
+            <th>server_url</th>
+            <th>use_status</th>
+            <th>disk_size</th>
+            <th>disk_avail</th> 
+            <th>timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {volist name="list" id="vo" empty="none" }
+
+            <tr>
+              <td>{$vo.id}</td>
+              <td><a href="/{$admin_path}/server/edit?id={$vo.id}">[=]</a></td>
+              <td>{if $vo.use_status eq 1}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                </svg>
+                {else/}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x text-red" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+               </svg>  
+              {/if}</td>
+
+              <td>{if $vo.disk_status eq 1}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                </svg>
+                {else/}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x text-red" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+               </svg>  
+              {/if}</td>
+
+              <td>{if $vo.server_status eq 1}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                </svg>
+                {else/}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x text-red" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+               </svg>  
+              {/if}</td>
+
+              
+              <td>{$vo.server_url}</td>
+              <td>{$vo.use_status}</td>
+              <td>{$vo.disk_size}</td>
+              <td>{$vo.disk_avail/1024|number_format=2}GB</td>
+              <td>{$vo.timestamp|date="Y-m-d H:i:s"}</td>
+            </tr>
+          {/volist}
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer d-flex align-items-center">
+        {$list|raw}
+    </div>
+  </div>
+</div>
+
+{include file='footer'}

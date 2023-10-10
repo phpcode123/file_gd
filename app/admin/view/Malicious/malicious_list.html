@@ -1,0 +1,46 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">恶意文件 > 文件列表 <span class="page-pretitle"> (<a href="/{$admin_path}/malicious/add">增加文件)</a></span></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable  table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>edit</th>
+            <th>file_hash</th>
+            <th>file_name</th>
+            <th>file_size</th>
+            <th>timestamp</th>
+            <th>comment</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {volist name="list" id="vo" empty="none" }
+
+            <tr>
+              <td>{$vo.id}</td>
+              <td><a href="/{$admin_path}/malicious/edit?id={$vo.id}">[=]</a></td>
+              <td style="max-width: 200px;overflow: hidden;">{$vo.file_hash}</td>
+              <td style="max-width: 200px;overflow: hidden;">{$vo.file_name}</td>
+              <td>{$vo.file_size}</td>
+              <td>{$vo.timestamp|date="Y-m-d H:i:s"}</td>
+              <td style="max-width: 200px;overflow: hidden;">{$vo.comment}</td>
+              <td><a href="/{$admin_path}/malicious/delete?id={$vo.id}">[X]</a></td>
+            </tr>
+          {/volist}
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer d-flex align-items-center">
+        {$list|raw}
+    </div>
+  </div>
+</div>
+
+{include file='footer'}

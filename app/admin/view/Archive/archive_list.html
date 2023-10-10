@@ -1,0 +1,71 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">归档管理 > 归档列表 <span class="page-pretitle"></span></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable  table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>edit</th>
+            
+            <th>file_id</th>
+            <th>short_str</th>
+            <th>hits</th>
+            <th>file_size</th>
+            <th>country</th>
+            <th>timestamp</th>
+            <th>last_timestamp</th>
+            <th>display_ad</th>
+            <th>redis_index</th>
+            <th>site_id</th>
+            <th>server_id</th>
+            <th>is_404</th>
+          </tr>
+        </thead>
+        <tbody>
+          {volist name="list" id="vo" empty="" }
+
+            <tr>
+              <td>{$vo.id}</td>
+              <td><a href="/{$admin_path}/archive/edit?id={$vo.id}">[=]</a></td>
+              
+              <td style="max-width:150px;overflow: hidden;"><a href='{$domain_data[$vo.site_id-1]["http_prefix"]}{$domain_data[$vo.site_id-1]["domain"]}/{$admin_path}/archive/file_list?id={$vo.id}' target="_blank">{$vo.file_id}</a></td>
+              
+              <td><a href='{$domain_data[$vo.site_id-1]["http_prefix"]}{$domain_data[$vo.site_id-1]["domain"]}/{$admin_path}/analysis/referer_from?short_str={$vo.short_str}' target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M9 6l11 0"></path>
+                  <path d="M9 12l11 0"></path>
+                  <path d="M9 18l11 0"></path>
+                  <path d="M5 6l0 .01"></path>
+                  <path d="M5 12l0 .01"></path>
+                  <path d="M5 18l0 .01"></path>
+               </svg>
+              </a><a href='{$domain_data[$vo.site_id-1]["http_prefix"]}{$domain_data[$vo.site_id-1]["domain"]}/{$vo.short_str}' target="_blank">{$vo.short_str}</a></td>
+              <td>{$vo.hits}</td>
+              <td>{$vo.file_size}</td>
+              <td>{$vo.country}</td>
+              <td>{$vo.timestamp|date="Y-m-d H:i"}</td>
+              <td>{$vo.last_timestamp|date="Y-m-d H:i"}</td>
+              <td>{$vo.display_ad}</td>
+              <td>{$vo.redis_index}</td>
+              <td>{$vo.site_id}</td>
+              <td>{$vo.server_id}</td>
+              <td>{$vo.is_404}</td>
+            </tr>
+          {/volist}
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer d-flex align-items-center">
+        {$list|raw}
+    </div>
+  </div>
+</div>
+
+{include file='footer'}

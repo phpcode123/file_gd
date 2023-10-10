@@ -1,0 +1,217 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">文件管理 > 编辑文件 <span class="page-pretitle">(id:{$data[0]['id']})&nbsp;&nbsp;(<a href="/{$data[0]['short_str']}" target="_blank">点击预览</a>)&nbsp;&nbsp;(<a href="/{$admin_path}/analysis/referer_from?short_str={$data[0]['short_str']}" target="_blank">查看访问来源</a>)&nbsp;&nbsp;(<a href="/{$admin_path}/file/black_file_hash?id={$data[0]['id']}">拉黑此文件FILE_HASH</a>)</span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/file/editpost">
+                <input type="hidden" name="id" value="{$data[0]['id']}"/>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">uuid (唯一标识符)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="uuid"  value="{$data[0]['uuid']}" placeholder="">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">site_id (站点site_id,域名指定site_id请参照tp_domain中的id数据)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="site_id"  value="{$data[0]['site_id']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_id (当前文件cdnserver服务器id，对应tp_server表的id)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="server_id"  value="{$data[0]['server_id']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">archive_str (文件归档字符串,如果是单文件则此项为空)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="archive_str"  value="{$data[0]['archive_str']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">short_str (short_str )</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="short_str" value="{$data[0]['short_str']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_hash (SHA256)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_hash"  value="{$data[0]['file_hash']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_url (文件URL)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_url"  value="{$data[0]['file_url']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_name (文件名)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200" name="file_name"  value="{$data[0]['file_name']}" placeholder="">
+                    </div>
+                </div>
+
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_byte (文件字节大小，单位B)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_byte"  value="{$data[0]['file_byte']}" placeholder="">
+                    </div>
+                </div>
+
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_size (文件大小)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_size"  value="{$data[0]['file_size']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_type (文件类型)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_type"  value="{$data[0]['file_type']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                
+                
+
+
+                <div class="form-group mb-3">
+                    <label class="form-label  page-pretitle">comment (文件备注)</label>
+                    <textarea class="form-control " name="comment" rows="3" id="textarea" placeholder="">{$data[0]['comment']}</textarea>
+                  
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">hits (点击量)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="hits"  value="{$data[0]['hits']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">downloads (下载次数)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="downloads"  value="{$data[0]['downloads']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">timestamp (Date:{$data['0']['timestamp']|date="Y-m-d H:i:s"})</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="timestamp"  value="{$data[0]['timestamp']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">last_timestamp (最后访问时间)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="last_timestamp"  value="{$data[0]['last_timestamp']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">display_ad (当前页面是否显示广告，1为显示，0为不显示，默认值0)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="display_ad"  value="{$data[0]['display_ad']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">redis_index (short_strredis缓存状态，1为已缓存，0为未缓存，默认值0)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="redis_index"  value="{$data[0]['redis_index']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">delete_status (文件删除状态，1为删除，0为未删除，当用户删除文件后逻辑将此值设为1。如果值为2则禁止用户下载此文件，常用于恶意文件，程序自动设置；当值为3时则说明此文件已超时，监控脚本自动删除，通常删除超过1个月还未有人访问的文件，程序就会直接删除。)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="delete_status"  value="{$data[0]['delete_status']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">is_404 (当值为1则直接显示404页面，此值一般手动设置)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="is_404"  value="{$data[0]['is_404']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">is_pc (判断是否是PC端UA)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="is_pc" value="{$data[0]['is_pc']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">user_agent (客户端UA)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="user_agent" value="{$data[0]['user_agent']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">user_language (客户端语言)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="user_language" value="{$data[0]['user_language']}"  placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">user_ip (用户ip)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control  bg-gray-900" name="user_ip" value="{$data[0]['user_ip']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">country (国家名称)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control  bg-gray-900" name="country" value="{$data[0]['country']}"  placeholder="">
+                    </div>
+                </div>
+
+        
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

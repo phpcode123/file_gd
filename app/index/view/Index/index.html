@@ -1,0 +1,251 @@
+{include file="/header"/}
+
+
+{load href="/static/js/fileupload.js" /}
+{load href="/static/css/fileupload.css" /}
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+        <div class="card">
+                {include file="/main_logo"/}
+                <div class="card-body">
+                    <h1 class="text-center text-blue mt-3 mb-3">Share and send large files!</h1>
+                    <p  class="intro gray-font text-center text-muted">
+                        Up to 2 GB files | without registration | all filetypes | secure and fast
+                    </p>
+                    
+
+                    <form id="fileupload" action="/generate_link" method="POST" enctype="multipart/form-data">
+                        <div class="row mt-5">
+                            
+                                <div class="fileupload-buttonbar">
+                                    <span class="fileinput-button btn btn-primary col-12  w-100 text-center large-padding">
+                                        <span class="large-font-size mb-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                                                <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z"/>
+                                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                            </svg>
+                                        Select files
+                                        </span>
+                                        <span class="d-block fs-5">- or drag and drop files in this window -</span>
+                                        <input type="file" name="files[]" multiple>
+                                    </span>
+
+                                    <table role="presentation" class="table table-striped table-hover table-bordered"><tbody class="files"></tbody></table>
+                                </div>            
+                            
+                                <input type="text" name="file_data" value='[]' id="files" class="d-none">
+                                <input type="text" name="hash_str" id="hash_str" class="d-none">
+                                <input type="text" name="server_id" value="{$cdn_server['id']}" class="d-none">
+                        <div>
+
+                        <div class="row mt-5">
+                            <div class="col-xl-12 col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label text-muted fs-6">DESCRITION(Optional)<span class="form-label-description" id="count">0/255</span></label>
+                                    <textarea class="form-control "  name="comment" rows="3" id="textarea" placeholder=""></textarea>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+                        <div class="row mt-5">
+                            <div class="col-sm-12 small-font-size text-center">
+                                Please note our <a href="/privacy" target="_blank" class="text-primary">data protection regulations</a> and our <a href="/terms" target="_blank"  class="text-primary">terms of use</a>.
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-2 col-xl-auto w-100 py-3">
+                            <button href="#" type="submit" class="btn btn-primary w-100 py-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M8.7 10.7l6.6 -3.4"></path>
+                                    <path d="M8.7 13.3l6.6 3.4"></path>
+                                    </svg>
+                                Share Now!
+                                </button>
+                        </div>
+
+                    </form>
+                    
+                </div>
+
+            
+
+            </div>
+        </div>
+
+        {if $display_adsense_num eq 1}
+            <!--Adsense code-->
+        {/if}
+      
+    </div>
+</div>
+
+
+
+{load href="/static/js/5e20e1e5ddc34269647ce58a762859e5.js" /}
+<script language="javascript">
+    timestamp("{$index_timestamp}");
+</script>
+
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload">
+    <td>
+    <p class="name fs-4">{%=file.name%}</p>
+    <strong class="error text-danger"></strong>
+    </td>
+    <td class="width20p">
+    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+    </div>
+    </td>
+    <td class="text-center width20p">
+    {% if (!i && !o.options.autoUpload) { %}
+    <button class="start btn btn-primary hide" disabled>
+    <i class="glyphicon glyphicon-upload"></i>
+    <span>Start</span>
+    </button>
+    {% } %}
+    {% if (!i) { %}
+    <span class="cancel pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+    </svg></span>
+    {% } %}
+    </td>
+    </tr>
+    {% } %}
+
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+    <td>
+    <p class="name fs-4">{%=file.name%}</p>
+    </td>
+    <td class="text-center width20p">
+
+Ready
+
+    </td>
+    <td class="text-center width20p">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+      </svg>
+    </td>
+    </tr>
+    {% } %}
+
+</script>
+
+<script>
+var uploadserver = "{$cdn_server['server_url']}/upload";
+
+var uploadComplete = false;
+var count = 0;
+$(function () {
+'use strict';
+
+$('#fileupload').fileupload({
+  // xhrFields: {withCredentials: true},
+  url: 'none',
+  limitConcurrentUploads: 1,
+  forceIframeTransport: false,
+  autoUpload: true,
+  triggerLoadingMask: false,
+  add: function (e, data) {
+    if (e.isDefaultPrevented()) {
+      return false;
+    }
+
+    var $this = $(this),
+      that = $this.data('blueimp-fileupload') ||
+        $this.data('fileupload'),
+      options = that.options;
+    data.context = that._renderUpload(data.files)
+      .data('data', data)
+      .addClass('processing');
+    options.filesContainer[
+      options.prependFiles ? 'prepend' : 'append'
+    ](data.context);
+    that._forceReflow(data.context);
+    that._transition(data.context);
+    data.process(function () {
+      return $this.fileupload('process', data);
+    }).always(function () {
+      data.context.each(function (index) {
+        $(this).find('.size').text(
+          that._formatFileSize(data.files[index].size)
+        );
+      }).removeClass('processing');
+      that._renderPreviews(data);
+    }).done(function () {
+
+      uploadComplete = true;
+      count++;
+
+      data.context.find('.start').prop('disabled', false);
+      if ((that._trigger('added', e, data) !== false) &&
+        (options.autoUpload || data.autoUpload) &&
+        data.autoUpload !== false) {
+
+        // get upload server and submit
+        /*
+        getUploadServer(function(uploadServer){
+            options.url = uploadServer;
+            data.submit();
+        });
+        */
+
+        setTimeout(function () {
+          options.url = uploadserver;
+          data.submit();
+        }, count * 1000);
+
+        /* 
+        options.url = uploadserver;
+        data.submit();
+        */
+      }
+    }).fail(function () {
+      if (data.files.error) {
+        data.context.each(function (index) {
+          var error = data.files[index].error;
+          if (error) {
+            $(this).find('.error').text(error);
+          }
+        });
+      }
+    });
+  }
+});
+
+});
+</script>
+
+<script language=javascript>    
+  $('#textarea').on('input', function(){
+      var text = $(this).val();
+      var len = text.length;
+      $('#count').text(len+"/255");
+      if(len > 254){
+        $("#textarea").addClass("is-invalid");
+      }else{
+        $("#textarea").removeClass("is-invalid");
+      }
+  });
+</script>
+
+
+{include file="/footer"/}

@@ -1,0 +1,44 @@
+{include file="/header"/}
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+            <div class="card">
+                {include file="/main_logo"/}
+
+                <div class="text-start mt-5  ps-4">
+                    <h1 class="text-start text-blue mt-3">URL Click Counter</h1>
+                    <p>Enter the URL to find out how many clicks it has received so far.</p>
+                </div>
+                <form action="/counter" method="post">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="mb-3">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control form-control-lg"
+                                        placeholder="Enter here your file URL..." name="url">
+                                    <button class="btn btn-primary" type="submit">Track Clicks</button>
+
+                                </div>
+                                <small class="form-hint">Example: https://file.gd/a0h5Q1</small>
+                            </div>
+
+
+                            <input type="text" class="d-none" name="hash_str" value="" id="hash_str">
+
+                        </div>
+
+
+                    </div>
+                </from>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/js/5e20e1e5ddc34269647ce58a762859e5.js"></script>
+<script language="javascript">
+    timestamp("{$index_timestamp}");
+</script>
+{include file="/footer"/}

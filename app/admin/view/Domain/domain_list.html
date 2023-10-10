@@ -1,0 +1,48 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">域名管理 > 域名列表 <span class="page-pretitle"> (已配置好的域名项请勿再随意更改，checked状态的域名最多只能设置一个)</span></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable  table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>edit</th>
+            <th>http_prefix</th>
+            <th>domain</th>
+            <th>site_name</th>
+            <th>display_ad</th>
+            <th>sitemap</th>
+            <th>note</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {volist name="list" id="vo" empty="none" }
+
+            <tr>
+              <td>{$vo.id}</td>
+              <td><a href="/{$admin_path}/domain/edit?id={$vo.id}">[=]</a></td>
+              <td>{$vo.http_prefix}</td>
+              <td><a href="{$vo.http_prefix}{$vo.domain}" target="_blank">{$vo.domain}</a></td>
+              <td>{$vo.site_name}</td>
+              <td>{$vo.display_ad}</td>
+              <td>{$vo.sitemap}</td>
+              <td style="max-width: 200px;overflow: hidden;">{$vo.comment}</td>
+              <td><a href="/{$admin_path}/domain/delete?id={$vo.id}">[X]</a></td>
+            </tr>
+          {/volist}
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer d-flex align-items-center">
+        {$list|raw}
+    </div>
+  </div>
+</div>
+
+{include file='footer'}

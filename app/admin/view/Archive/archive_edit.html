@@ -1,0 +1,134 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">文件归档管理 > 编辑归档 <span class="page-pretitle">(id:{$data[0]['id']})&nbsp;&nbsp;(<a href="/{$data[0]['short_str']}" target="_blank">点击预览</a>)&nbsp;&nbsp;(<a href="/{$admin_path}/analysis/referer_from?short_str={$data[0]['short_str']}" target="_blank">查看访问来源</a>)</span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/archive/editpost">
+                <input type="hidden" name="id" value="{$data[0]['id']}"/>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">uuid (唯一标识符)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="uuid"  value="{$data[0]['uuid']}" placeholder="">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">site_id (站点site_id,域名指定site_id请参照tp_domain中的id数据)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="site_id"  value="{$data[0]['site_id']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_id (当前文件cdnserver服务器id，对应tp_server表的id)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="server_id"  value="{$data[0]['server_id']}" placeholder="">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_id (file_id)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_id" value="{$data[0]['file_id']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">short_str (short_str )</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="short_str" value="{$data[0]['short_str']}"  placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_byte (文件字节大小，单位B)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_byte"  value="{$data[0]['file_byte']}" placeholder="">
+                    </div>
+                </div>
+                
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_size (文件大小)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-900" disabled name="file_size"  value="{$data[0]['file_size']}" placeholder="">
+                    </div>
+                </div>
+
+                
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">hits (点击量)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="hits"  value="{$data[0]['hits']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">display_ad (当前页面是否显示广告，1为显示，0为不显示，默认值0)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="display_ad"  value="{$data[0]['display_ad']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">country (当前归档列表的所属国家)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="country"  value="{$data[0]['country']}" placeholder="">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">timestamp (Date:{$data['0']['timestamp']|date="Y-m-d H:i:s"})</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="timestamp"  value="{$data[0]['timestamp']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">last_timestamp (最后访问时间)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="last_timestamp"  value="{$data[0]['last_timestamp']}" placeholder="">
+                    </div>
+                </div>
+
+                
+
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">redis_index (short_strredis缓存状态，1为已缓存，0为未缓存，默认值0)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="redis_index"  value="{$data[0]['redis_index']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">is_404 (当值为1则直接显示404页面，此值一般手动设置)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control bg-gray-200"  name="is_404"  value="{$data[0]['is_404']}" placeholder="">
+                    </div>
+                </div>
+
+
+        
+        
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>{$app_name} Admin Dashboard</title>
+
+    {load href="/static/tabler/dist/css/tabler.min.css" /}
+    {load href="/static/tabler/dist/css/tabler-flags.min.css" /}
+    {load href="/static/tabler/dist/css/tabler-payments.min.css" /}
+    {load href="/static/tabler/dist/css/tabler-vendors.min.css" /}
+    {load href="/static/tabler/dist/js/tabler.min.js" /}
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+  <body  class="layout-fluid">
+  <div class="page">
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+          <a href="#">
+            <img src="/static/tabler/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+          </a>
+        </h1>
+        <div class="navbar-nav flex-row order-md-last">
+          <div class="nav-item d-none d-md-flex me-3">
+            <div class="btn-list">
+              <a href="/" class="btn" target="_blank" rel="noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                </svg>
+                Home
+              </a>
+              <a href="/{$admin_path}/login/logout" class="btn" rel="noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                  <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+               </svg>
+                Logout
+              </a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+              <span class="avatar avatar-sm" style="background-image: url(/static/tabler/static/avatars/000m.jpg)"></span>
+              <div class="d-none d-xl-block ps-2">
+                <div>{$username}</div>
+                <div class="mt-1 small text-muted">Admin</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="navbar-expand-md">
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar navbar-light">
+          <div class="container-xl">
+            <ul class="navbar-nav">
+
+              <li class="nav-item {if $controller_name eq 'File'}active{/if} {if $controller_name eq 'Archive'}active{/if} dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-zip" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M6 20.735a2 2 0 0 1 -1 -1.735v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-1"></path>
+                      <path d="M11 17a2 2 0 0 1 2 2v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a2 2 0 0 1 2 -2z"></path>
+                      <path d="M11 5l-1 0"></path>
+                      <path d="M13 7l-1 0"></path>
+                      <path d="M11 9l-1 0"></path>
+                      <path d="M13 11l-1 0"></path>
+                      <path d="M11 13l-1 0"></path>
+                      <path d="M13 15l-1 0"></path>
+                   </svg> 
+                    </span>
+                  <span class="nav-link-title">
+                    文件管理
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/file/list">
+                        文件列表
+                      </a>
+                      
+                      <a class="dropdown-item" href="/{$admin_path}/file/query">
+                        文件查询
+                      </a>
+      
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/archive/list">
+                        归档列表
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/file/list?sort=hits">
+                        点击排序
+                      </a>
+           
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+
+
+              <li class="nav-item {if $controller_name eq 'Analysis'}active{/if}  {if $controller_name eq 'Click'}active{/if} dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-box-left-middle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M20 18.222v-12.444c0 -.982 -.796 -1.778 -1.778 -1.778h-12.444c-.982 0 -1.778 .796 -1.778 1.778v12.444c0 .982 .796 1.778 1.778 1.778h12.444c.982 0 1.778 -.796 1.778 -1.778z"></path>
+                        <path d="M9 15h-2"></path>
+                        <path d="M13 12h-6"></path>
+                        <path d="M11 9h-4"></path>
+                     </svg>
+                    </span>
+                  <span class="nav-link-title">
+                    数据分析
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/analysis/referer_list">
+                        来源列表
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/analysis/referer?day=0">
+                        访问分析
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/click/list?day=0">
+                        数据统计
+                      </a>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/analysis/query">
+                        来源查询
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/analysis/area?day=0">
+                        地区分析
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/analysis/index_referer_list">
+                        首页来源
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item  {if $controller_name eq 'Domain'}active{/if} {if $controller_name eq 'Adsense'}active{/if} dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"></path>
+                      <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"></path>
+                      <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"></path>
+                      <path d="M11 6l9 0"></path>
+                      <path d="M11 12l9 0"></path>
+                      <path d="M11 18l9 0"></path>
+                   </svg>
+                    </span>
+                  <span class="nav-link-title">
+                    域名管理
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/domain/list">
+                        域名列表
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/adsense/list">
+                        Adsense列表
+                      </a>
+           
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/domain/add">
+                        添加域名
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/adsense/add">
+                        添加Adsense
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+
+              <li class="nav-item  {if $controller_name eq 'Server'}active{/if} dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"></path>
+                      <path d="M3 12m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"></path>
+                      <path d="M7 8l0 .01"></path>
+                      <path d="M7 16l0 .01"></path>
+                      <path d="M11 8h6"></path>
+                      <path d="M11 16h6"></path>
+                   </svg>
+                    </span>
+                  <span class="nav-link-title">
+                    服务器
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/server/list">
+                        服务器列表
+                      </a>
+           
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/server/add">
+                        添加服务器
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+
+              <li class="nav-item {if $controller_name eq 'Contact'}active{/if} {if $controller_name eq 'ReportMaliciousUrl'}active{/if} dropdown">
+                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-horizontal" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                      <path d="M4 6l8 0"></path>
+                      <path d="M16 6l4 0"></path>
+                      <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                      <path d="M4 12l2 0"></path>
+                      <path d="M10 12l10 0"></path>
+                      <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                      <path d="M4 18l11 0"></path>
+                      <path d="M19 18l1 0"></path>
+                   </svg>
+                    </span>
+                  <span class="nav-link-title">
+                    其它项
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                      <a class="dropdown-item" href="/{$admin_path}/report/list?status=0">
+                        投诉列表
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/contact/list?status=0">
+                        留言列表
+                      </a>
+                      <a class="dropdown-item" href="/{$admin_path}/sitemaps/index">
+                        生成地图
+                      </a>
+                    </div>
+                    <div class="dropdown-menu-column">
+                        <a class="dropdown-item" href="/{$admin_path}/report/read">
+                          一键已读
+                        </a>
+                        
+                        <a class="dropdown-item" href="/{$admin_path}/contact/read">
+                          一键已读
+                        </a>
+                        <a class="dropdown-item" href="/{$admin_path}/malicious/list">
+                          恶意文件
+                        </a>
+                      </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--常用访问按钮-->
+    <div class="container-xl">
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="btn-list">
+            <a href="/{$admin_path}/click/list" class="btn btn-sm">数据统计</a>
+            <a href="/{$admin_path}/file/list" class="btn btn-sm">文件列表</a>
+            <a href="/{$admin_path}/archive/list" class="btn btn-sm">归档列表</a>
+            <a href="/{$admin_path}/file/query" class="btn btn-sm">文件查询</a>
+            <a href="/{$admin_path}/file/list?sort=hits" class="btn btn-sm">点击排序</a>
+            <a href="/{$admin_path}/analysis/referer_list?day=0" class="btn btn-sm">来源列表</a>
+            <a href="/{$admin_path}/analysis/index_referer_list?day=0" class="btn btn-sm">首页来源</a>
+            <a href="/{$admin_path}/analysis/user?day=0" class="btn btn-sm">用户分析</a>
+            <a href="/{$admin_path}/analysis/referer?day=0" class="btn btn-sm">访问分析</a>
+            <a href="/{$admin_path}/analysis/area?day=0" class="btn btn-sm">地区分析</a>
+            <a href="/{$admin_path}/malicious/list" class="btn btn-sm">恶意文件</a>
+            <a href="/{$admin_path}/server/list" class="btn btn-sm">服务器列表</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+        <div class="container-xl">

@@ -1,0 +1,107 @@
+<div class="container-xl">
+  <div class="row justify-content-center">
+    <div class="col-xl-8 col-md-12  mt-5 mb-2">
+      <ul class="list-inline list-inline-dots mb-0 text-center">
+        <li class="list-inline-item"><a href="/" class="link-secondary">Home</a></li>
+        <li class="list-inline-item"><a href="/faq" class="link-secondary">FAQ</a></li>
+        <li class="list-inline-item"><a href="/privacy" class="link-secondary">Privacy Policy</a></li>
+        <li class="list-inline-item"><a href="/contact" class="link-secondary">Contact</a></li>
+        <li class="list-inline-item"><a href="/counter" class="link-secondary">Counter</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container-xl">
+  <div class="row justify-content-center">
+    <div class="col-xl-8 col-md-12 mt-1 mb-5">
+    
+      <div class="btn-list">
+        <a href="#" class="btn m-auto" data-bs-toggle="modal" data-bs-target="#modal-team">
+          Report
+        </a>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+<div class="modal modal-blur fade" id="modal-team" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Report content on this page</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="report_page" action="/report_page" method="post">
+          <div>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason"  value="malware" checked="">
+              <span class="form-check-label fs-4">Malware</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason"  value="fraudulent">
+              <span class="form-check-label fs-4">Fraudulent</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason"  value="Violence">
+              <span class="form-check-label fs-4">Violence</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason"  value="Child Abuse">
+              <span class="form-check-label fs-4">Child Abuse</span>
+            </label>
+            
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason"  value="Copyright">
+              <span class="form-check-label fs-4">Copyright</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="reason" value="Other">
+              <span class="form-check-label fs-4">Other</span>
+            </label>
+
+          </div>
+          <div class="mt-5">
+            <input type="text" name="report_short_str" class="d-none"  value="{$report_short_str}">
+            <input type="text" name="comment" class="form-control form-control-flush border border-bottom-0" value=""  placeholder="Add Comment...">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn me-auto" data-bs-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  onclick="report_page()">REPORT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function report_page() {
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/report_page",
+        data: $('#report_page').serialize(),
+        success: function (result) {
+          var data = JSON.parse(result);
+          layer.msg(data.message, {
+            time: 3000, 
+          });
+        },
+        error : function() {
+          layer.msg("Error, Please try again later.", {
+              time: 3000, 
+            });
+        }
+    });
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{include file="/header"/}
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+            <div class="card">
+                {include file="/main_logo"/}
+
+                <div class="text-start mt-5  ps-4">
+                    <h1 class="text-start text-blue mt-3">Total URL Clicks</h1>
+                    <p>Our tool will count each click as one hit to the file URL, even if there are multiple clicks from the same person or device. Check the total number of clicks from other file URL. <a href="/counter"><kbd>CLICK HERE</kbd></a></p>
+                </div>
+                
+
+                <table class="table table-vcenter card-table table-striped mt-5">
+   
+                    <thead>
+                      <tr>
+                        <th>FileName</th>
+                        <th class="w-3">Views</th>
+                        <th class="w-3">Downloads</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {volist name="data" id="vo"}
+                            <tr>
+                                <td>{$vo.file_name}</td>
+                                <td class="text-muted">{$vo.hits}</td>
+                                <td class="text-muted">{$vo.downloads}</td>
+                            </tr>
+                        {/volist}
+                    
+                    </tbody>
+
+                </table>
+
+
+                <div class="col-sm-12 text-center my-5">
+                    
+
+                    <a href="/" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                            <path d="M7 9l5 -5l5 5"></path>
+                            <path d="M12 4l0 12"></path>
+                         </svg>
+                        Upload own files
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="/footer"/}

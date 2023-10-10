@@ -1,0 +1,25 @@
+﻿
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,table,td,th,img,div,dl,dt,dd,input,select,form,fieldset {
+	padding:0
+}
+body {
+	color:#333;
+	font-family: arial,sans-serif;
+	font-size:12px;
+	margin:0 auto
+}
+.mt-10{margin-top: 10px !important;}
+.mt-50{margin-top: 50px !important;}
+.p25{padding:25px;}
+.w70{width:70px;}
+.h30{height:30px;line-height: 30px;}
+.h70{height: 70px;}
+.min-h70{min-height: 70px;}
+.h100{height: 100px;}
+.h150{height: 150px;}
+.h200{height: 200px;}
+.mh70{max-height: 70px;word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;overflow:hidden}
+.mh100{max-height: 100px;word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;overflow:hidden}
+.mh120{max-height: 120px;word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;overflow:hidden}
+.mh150{max-height: 150px;word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;overflow:hidden}
+.mh200{max-height: 200px;word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;overflow:hidden}

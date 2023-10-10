@@ -1,0 +1,95 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">域名管理 > 编辑域名<span class="page-pretitle">(id:{$data[0]['id']})</span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/domain/editpost">
+                <input type="hidden" name="id" value="{$data[0]['id']}"/>
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">http_prefix (如:https:// 此类站点必须强制全部https化)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="http_prefix"  value="{$data[0]['http_prefix']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">domain (如:baidu.com 不要https前缀 ,不要以/结尾，最好不带www)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="domain"  value="{$data[0]['domain']}" placeholder="">
+                    </div>
+                </div>
+
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">site_name (用于全站调用)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="site_name"  value="{$data[0]['site_name']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">index_title (首页标题)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="index_title"  value="{$data[0]['index_title']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">index_keyword (首页关键词)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="index_keyword"  value="{$data[0]['index_keyword']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">index_description (首页描述)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="index_description"  value="{$data[0]['index_description']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">display_ad (是否显示页面广告 1为显示，0为不显示，数据库默认值为1)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="display_ad"  value="{$data[0]['display_ad']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">sitemap (是否生成sitemap，1为生成，0为不生成(点击后台的网站地图进行生成，txt文件在public目录下))</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="sitemap"  value="{$data[0]['sitemap']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label  page-pretitle">comment (域名特殊情况备注，正常留空,字符长度varchar(1000))</label>
+                    <textarea class="form-control" name="comment" rows="3" placeholder="">{$data[0]['comment']}</textarea>
+                </div>
+
+
+
+               
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

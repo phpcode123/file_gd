@@ -1,0 +1,62 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">恶意文件 > 添加文件<span class="page-pretitle"> </span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/malicious/addpost">
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_hash (恶意文件的hash值，程序主要通过此值来判断恶意文件)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="file_hash"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_name (恶意文件名，通常恶意软件是.exe后缀文件，且文件会不停的更改用户名)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="file_name"  value="" placeholder="">
+                    </div>
+                </div>
+
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">file_size (恶意文件的大小，如果文件采用打包的方式上传，file_hash值会变化，但是文件大小通常不会有太大的变化，此值用作参考文件大小范围)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="file_size"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">timestamp (时间戳)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="timestamp"  value="<?php echo time();?>" placeholder="">
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label  page-pretitle">comment (特殊情况备注，正常留空,字符长度varchar(1000))</label>
+                    <textarea class="form-control" name="comment" rows="3" placeholder=""></textarea>
+                </div>
+
+               
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

@@ -1,0 +1,24 @@
+#new 注意伪静态顺序不能错乱
+#20230705 File uploader
+rewrite ^/$ /index.php/index/index last;
+rewrite ^/generate_link$ /index.php/index/generate_link last;
+rewrite ^/contact$ /index.php/contact/index last;
+rewrite ^/counter$ /index.php/counter/index last;
+rewrite ^/report$ /index.php/report/index last;
+rewrite ^/report_page$ /index.php/report/page last;
+rewrite ^/faq$ /index.php/faq/index last;
+rewrite ^/privacy$ /index.php/privacy/index last;
+rewrite ^/terms$ /index.php/terms/index last;
+
+#20230723 file short_str 6 archive_str 5
+rewrite "^/(\w{5})$" /index.php/file/archive?short_str=$1 last;
+rewrite "^/(\w{6})$" /index.php/file/file?short_str=$1 last;
+rewrite "^/start/(\w{6})$" /index.php/file/start?short_str=$1 last;
+rewrite "^/down/(\w{6})$" /index.php/file/start?short_str=$1 last;
+rewrite "^/download/(\w{6})$" /index.php/file/download?short_str=$1 last;
+rewrite "^/delete/(\w{6})$" /index.php/file/delete?short_str=$1 last;
+
+
+
+#Google adsense ads.txt伪静态
+rewrite ^/ads.txt$ /index.php/adstxt/index last;

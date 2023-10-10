@@ -1,0 +1,115 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">服务器管理 > 编辑服务器<span class="page-pretitle">(注意 checked状态的域名只能设置一个，否则前端input标签会出现多个checked选择域名，会导致出现问题)</span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/server/editpost">
+                <input type="hidden" name="id" value="{$data[0]['id']}"/>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_url (File文件cdn二级域名，带https前缀 ,结尾不要/)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_url"  value="{$data[0]['server_url']}" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_size (服务器容量：{$data[0]['disk_size']}GB)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_size"  value="{$data[0]['disk_size']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_avail (服务器剩余可用容量，单位：M(兆)   {$data[0]['disk_avail']/1024|substr=0,6}GB)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_avail"  value="{$data[0]['disk_avail']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_status (服务器硬盘的状态，1为正常，0为容量已满，默认1)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_status"  value="{$data[0]['disk_status']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">times (总请求次数，用不重置。默认值为0，每请求一次从服务器此值就会自增1)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="times"  value="{$data[0]['times']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">error_times (错误次数，当此值大于3，status值会重置为0，即掉线状态)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="error_times"  value="{$data[0]['error_times']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">timestamp (最后一次的请求时间戳，time:{$data[0]['timestamp']|date="Y-m-d H:i:s"})</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name=""  value="{$data[0]['timestamp']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_status (从服务器file_server command命令行运行状态，1运行，0停止，默认为0,程序逻辑自动更新)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_status"  value="{$data[0]['server_status']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">use_status (当前server的使用状态，1正在使用，0为不使用，默认为0.手工处理，程序逻辑不会更新此值。当值为0时，程序便不会再使用此上传服务器，可用于文件负载的均衡。)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="use_status"  value="{$data[0]['use_status']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_order_date (当前server服务器的下单开通日期)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_order_date"  value="{$data[0]['server_order_date']}" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_expiration_date (当前server的过期日期)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_expiration_date"  value="{$data[0]['server_expiration_date']}" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label  page-pretitle">comment （当前服务器信息备忘,字段为varchar(1000))</label>
+                    <textarea class="form-control" name="comment" rows="3" placeholder="">{$data[0]['comment']}</textarea>
+                  </div>
+
+
+
+               
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

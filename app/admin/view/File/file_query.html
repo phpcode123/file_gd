@@ -1,0 +1,119 @@
+{include file='header'}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">文件查询 </span>
+        </div>
+
+        <div class="card-body">
+            <div class="col-md-5 col-12">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/querypost">
+                        <label class="form-label page-pretitle">文件查询（直接输入short_url查询）</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="short_str"  placeholder="Search for short_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-12">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/querypost">
+                        <label class="form-label page-pretitle">Archive查询（直接输入short_url查询）</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="short_str"  placeholder="Search for short_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="col-md-5 col-12">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/analysis/referer_from">
+                        <label class="form-label page-pretitle">文件或Archive来源查询（直接输入short_url查询）</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="short_str"  placeholder="Search for short_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-5 col-12 mt-5">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/querypost_like">
+                        <label class="form-label page-pretitle">字符like查询(数据库sql中的like语句查询字符串，主要匹配数据库url字段)</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="like_str" placeholder="Search for like">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 col-12 mt-5">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/querypost_in">
+                        <label class="form-label page-pretitle">字符串in批量查询(多个字符串使用空格或者逗号隔开，主要匹配数据库short_url字段)</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="in_str" placeholder="Search for short_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <br/>
+            <div class="col-md-5 col-12 mt-5">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/delete_file">
+                        <label class="form-label page-pretitle">手工删除指定id文件(输入id值即可，程序逻辑会删除远程cdn上的文件，并设置delete_status为3，即文件状态显示为过期)</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="id" placeholder="input id">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <br/>
+            <div class="col-md-5 col-12 mt-5">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/set_is_404_in">
+                        <label class="form-label page-pretitle">字符串in批量设置is_404(id值使用逗号隔开，匹配数据库id值)</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="id_str" placeholder="input id_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 col-12 mt-5">
+                <div class="mb-3">
+                    <form method="post" action="/{$admin_path}/file/set_delete_status_in">
+                        <label class="form-label page-pretitle">字符串in批量设置delete_status为2(id值使用逗号隔开，匹配数据库id值)</label>
+                        <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="id_str" placeholder="input id_str">
+                        <button class="btn" type="sumbit">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br/>
+            <br/>
+           
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+    </div>
+</div>
+
+
+
+{include file='footer'}

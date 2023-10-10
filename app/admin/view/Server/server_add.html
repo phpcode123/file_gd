@@ -1,0 +1,95 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">服务器管理 > 添加服务器<span class="page-pretitle"> (注意服务器域名一定不能重复!)</span></span>
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12 col-md-10 col-xl-6">
+            <form method="post" action="/{$admin_path}/server/addpost">
+
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_url (File文件cdn二级域名，带https前缀 ,结尾不要/)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_url"  value="" placeholder="">
+                    </div>
+                </div>
+
+                
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_size (服务器容量 varchar(100))</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_size"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_avail (服务器剩余可用容量，此项由程序自动返回结果，单位：M(兆))</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_avail"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">disk_status (服务器硬盘的状态，1为正常，0为容量已满，默认0,程序逻辑自动更新)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="disk_status"  value="0" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_status (从服务器file_server command命令行运行状态，1运行，0停止，默认为0,程序逻辑自动更新)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_status"  value="0" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">use_status (当前server的使用状态，1正在使用，0为不使用，默认为0,手工处理，程序逻辑不会更新此值。)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="use_status"  value="1" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_order_date (当前server服务器的下单开通日期)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_order_date"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">server_expiration_date (当前server的过期时间)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="server_expiration_date"  value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label page-pretitle">use_status (当前server的使用状态，1正在使用，0为不使用，默认为0,手工处理，程序逻辑不会更新此值。)</label>
+                    <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="use_status"  value="1" placeholder="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label  page-pretitle">comment （当前服务器信息备忘,字段为varchar(1000))</label>
+                    <textarea class="form-control" name="comment" rows="3" placeholder=""></textarea>
+                  </div>
+
+               
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{include file='footer'}

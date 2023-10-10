@@ -1,0 +1,182 @@
+{include file="/header"/}
+
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+            <div class="card">
+                {include file="/main_logo"/}
+                <div class="card-body">
+                    {if $black_extension_num eq 1}
+                    
+                    <p class="intro text-start text-muted bg-red text-red-fg mt-3 mb-3 p-2 fs-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm.01 13l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -8a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor"></path>
+                         </svg>
+                        This file is executable, be careful of viruses!</p>{/if}
+                    <h1 class="text-start text-blue mt-3 mb-3">
+                        {$file_data[0]['file_name']} ({$file_data[0]['file_size']}){if $file_data[0]['delete_status'] eq 1}<mark class="text-red-fg bg-red">Deleted!</mark>{/if}{if $file_data[0]['delete_status'] eq 2}<mark class="text-red-fg bg-red">Banned!</mark>{/if}{if $file_data[0]['delete_status'] eq 3}<mark class="text-red-fg bg-red">Expired!</mark>{/if}
+                    </h1>
+                    
+                    <p class="intro gray-font text-start text-muted">{if $file_data[0]['comment'] neq ""}{$file_data[0]['comment']}{else/}Download the file {$file_data[0]['file_name']} now.{/if}</p>
+
+                    
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-12 text-center mt-4">
+
+                            <img 
+                                {if $file_data[0]['delete_status'] gt 0}
+                                    data-src="/static/filetype/delete.png"
+                                {else/}
+                                    
+                                    {switch name="file_data[0]['file_type']"}
+                                        {case value="image/jpeg|image/png|image/gif|image/bmp|image/webp"}data-src="{$file_data[0]['file_url']}"{/case}
+                                        {case value="video/mp4|video/quicktime|video/x-matroska|video/webm|video/3gpp"}data-src="/static/filetype/video.png"{/case}
+                                        {case value="audio/mpeg|audio/aac|audio/wav|audio/x-m4a"}data-src="/static/filetype/audio.png"{/case}
+                                        {case value="text/plain"}data-src="/static/filetype/txt.png"{/case}
+                                        {case value="application/pdf"}data-src="/static/filetype/pdf.png"{/case}
+                                        {case value="application/rar"}data-src="/static/filetype/rar.png"{/case}
+                                        {case value="text/csv"}data-src="/static/filetype/csv.png"{/case}
+                                        {case value="text/javascript"}data-src="/static/filetype/javascript.png"{/case}
+                                        {case value="text/html"}data-src="/static/filetype/html.png"{/case}
+                                        {case value="image/vnd.adobe.photoshop"}data-src="/static/filetype/psd.png"{/case}
+                                        {case value="application/vnd.android.package-archive"}data-src="/static/filetype/apk.png"{/case}
+                                        {case value="application/x-zip-compressed|application/zip|application/x-7z-compressed"}data-src="/static/filetype/zip.png"{/case}
+                                        {default/}data-src="/static/filetype/file.png"
+                                    {/switch}
+                                    
+                                {/if}
+        
+                                src="/static/filetype/loading.gif" alt="{$file_data[0]['file_name']|raw}"  class="lazyload" style="height:100px;min-height:100px;width:auto;display: block;margin:0 auto;">
+
+                        </div>
+                    </div>
+
+                    <div class="py-3 text-center mt-4">
+                        {if $file_data[0]['delete_status'] lt 1}
+                            <a href="/down/{$file_data[0]['short_str']}?token={$file_token}&t={$file_timestamp}" target="_blank" class="btn  btn-primary py-2 p-3 mx-auto fs-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                                    <path d="M7 11l5 5l5 -5"></path>
+                                    <path d="M12 4l0 12"></path>
+                                </svg>
+                                Donwload
+                            </a>
+                        {/if}
+
+                    </div>
+
+
+                    <div class="my-3">
+                        <label class="form-label">Share File:</label>
+                        <div class="row g-2">
+                            <div class="col">
+
+                            <div class="input-group mb-2">
+                                <input id="file_url" type="text" class="form-control" placeholder="Copy link url..." name="url" value="{$domain_url}{$file_data[0]['short_str']}">
+                                    <button  class="btn  copy" data-clipboard-target="#file_url" data-clipboard-text="{$domain_url}{$file_data[0]['short_str']}" data-clipboard-action="copy">
+                                        Copy
+                                </button>
+
+                            </div>
+                            {if $file_data[0]['delete_status'] neq 1}
+                                {if $delete_button_status eq 1}
+                                    <small class="form-hint">Uploaded a wrong file? <a href="/delete/{$file_data[0]['short_str']}" class="text-danger"><svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-trash" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4 7l16 0"></path>
+                                        <path d="M10 11l0 6"></path>
+                                        <path d="M14 11l0 6"></path>
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                    </svg>
+                                    Delete</a> file (12 hours valid.)</small>
+
+                                {/if}
+                            {else/}
+                                <small class="form-hint text-danger">This file has been deleted!</small>
+                            {/if}
+                               
+
+
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-xl-8 col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>FileName:&nbsp;</td>
+                                <td class="text-break">{$file_data[0]['file_name']}</td>
+                            </tr>
+                            <tr>
+                                <td>FileSize:&nbsp;</td>
+                                <td>{$file_data[0]['file_size']}</td>
+                            </tr>
+                            <tr>
+                                <td>FileHash:&nbsp;</td>
+                                <td class="text-break">{$file_data[0]['file_hash']}(SHA256)</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">QR-URL:&nbsp;</td>
+                                <td><img src="/qrcodeimage.php?qr={$domain_url}{$file_data[0]['short_str']}" class="w70"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {if $file_data[0]['display_ad'] eq 1}
+            {if $display_adsense_num eq 1}
+                <!--Google adsense code-->
+            {/if}
+        {/if}
+        
+    </div>
+</div>
+{load href="/static/js/lazysizes.min.js" /}
+{load href="/static/js/clipboard.min.js" /}
+{load href="/static/layer/layer.js" /}
+<script type="text/javascript">
+    var clipboard = new ClipboardJS('.copy');
+
+    clipboard.on('success', function(e) {
+        //console.info('Action:', e.action);
+        //console.info('Text:', e.text);
+        //console.info('Trigger:', e.trigger);
+        
+        layer.msg("Copied!",{
+          time: 1000, 
+        }
+        );
+    });
+    clipboard.on('error', function(e) {
+
+        layer.open({
+            title: 'Tips',
+            content: 'Your browser may not support it. Please copy it manually.'
+        });
+    });
+  
+  </script>
+{include file="/file_footer"/}

@@ -1,0 +1,139 @@
+{include file="/header"/}
+
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+            <div class="card">
+                {include file="/main_logo"/}
+                <div class="card-body">
+                    <h1 class="text-start text-blue mt-3 mb-3">File Archive: {$archive_data[0]['short_str']} ({$archive_data[0]['file_size']})</h1>
+        
+
+                    <div class="my-3">
+                        <label class="form-label">Share archive:</label>
+                        <div class="row g-2">
+                            <div class="col">
+                                <div class="input-group mb-2">
+                                    <input id="file_url" type="text" class="form-control" placeholder="Copy link url..." name="url" value="{$domain_url}{$archive_data[0]['short_str']}">
+                                    <button  class="btn  copy" data-clipboard-target="#file_url" data-clipboard-text="{$domain_url}{$archive_data[0]['short_str']}" data-clipboard-action="copy">
+                                        Copy
+                                    </button>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row row-cards mb-5">
+                        {volist name="file_data" id="vo"}
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="card card-sm">
+                                    <a href="/{$vo.short_str}" target="_blank" class="d-block  py-2"><img
+                                            
+                                        {if $vo.delete_status neq 1}
+                                            {switch name="vo.file_type"}
+                                                {case value="image/jpeg|image/png|image/gif|image/bmp|image/webp"}data-src="{$vo.file_url}"{/case}
+                                                {case value="video/mp4|video/quicktime|video/x-matroska|video/webm|video/3gpp"}data-src="/static/filetype/video.png"{/case}
+                                                {case value="audio/mpeg|audio/aac|audio/wav|audio/x-m4a"}data-src="/static/filetype/audio.png"{/case}
+                                                {case value="text/plain"}data-src="/static/filetype/txt.png"{/case}
+                                                {case value="application/pdf"}data-src="/static/filetype/pdf.png"{/case}
+                                                {case value="application/rar"}data-src="/static/filetype/rar.png"{/case}
+                                                {case value="text/csv"}data-src="/static/filetype/csv.png"{/case}
+                                                {case value="text/javascript"}data-src="/static/filetype/javascript.png"{/case}
+                                                {case value="text/html"}data-src="/static/filetype/html.png"{/case}
+                                                {case value="image/vnd.adobe.photoshop"}data-src="/static/filetype/psd.png"{/case}
+                                                {case value="application/vnd.android.package-archive"}data-src="/static/filetype/apk.png"{/case}
+                                                {case value="application/x-zip-compressed|application/zip|application/x-7z-compressed"}data-src="/static/filetype/zip.png"{/case}
+                                                {default/}data-src="/static/filetype/file.png"
+                                            {/switch}
+                                        {else/}
+                                            data-src="/static/filetype/delete.png"
+                                        {/if}
+                                        src="/static/filetype/loading.gif" alt="{$vo.file_name|raw}"  class="lazyload" style="height:100px;width:auto;display:block;margin:0 auto;object-fit: cover;"></a>
+                                    <div class="card-body">
+                                        <div class="align-items-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="{$vo.file_name|raw}"><a href="/{$vo.short_str}" target="_blank" class="py-2 text-gray text-start text-wrap fs-4">{$vo.file_name|raw}</a></div>
+                                        <div class="align-items-center h30 text-secondary fs-6">{$vo.file_size}</div>
+                                    </div>
+                                    
+                                    <div class="card-body bg-muted-lt">
+
+                                        <div class="text-center">
+                                            <a href="{$domain_url}down/{$vo.short_str}?token={$file_token}&t={$file_timestamp}" target="_blank" class="btn btn-info">Download</a>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        {/volist}
+                        
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-xl-8 col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Archive Name:&nbsp;</td>
+                                <td class="text-break">{$archive_data[0]['short_str']} ({$archive_data[0]['file_size']})</td>
+                            </tr>
+                            <tr>
+                                <td>Archive Size:&nbsp;</td>
+                                <td>{$archive_data[0]['file_byte']} (byte)</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">QR-URL:&nbsp;</td>
+                                <td><img src="/qrcodeimage.php?qr={$domain_url}{$archive_data[0]['short_str']}" class="w70"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {if $archive_data[0]['display_ad'] eq 1}
+            {if $display_adsense_num eq 1}
+                <!--Google adsense code-->
+            {/if}
+        {/if}
+
+    </div>
+</div>
+{load href="/static/js/lazysizes.min.js" /}
+{load href="/static/js/clipboard.min.js" /}
+{load href="/static/layer/layer.js" /}
+<script type="text/javascript">
+    var clipboard = new ClipboardJS('.copy');
+
+    clipboard.on('success', function(e) {
+        layer.msg("Copied!",{
+          time: 1000, 
+        }
+        );
+    });
+    clipboard.on('error', function(e) {
+
+        layer.open({
+            title: 'Tips',
+            content: 'Your browser may not support it. Please copy it manually.'
+        });
+    });
+  
+  </script>
+{include file="/file_footer"/}

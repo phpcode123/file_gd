@@ -1,0 +1,97 @@
+{include file='header'}
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">数据分析 > 数据统计 <span class="page-pretitle">  （投诉:&nbsp;{if $report_data_num gt 0}<code class="text-red">{$report_data_num}</code>{else/}0{/if}，留言:&nbsp;{if $contact_data_num gt 0}<code class="text-red">{$contact_data_num}</code>{else/}0{/if}，最后文件数据: {$file_last_data[0]['id']}/{$file_last_data[0]["timestamp"]|date='Y-m-d H:i'} 当天数据从redis读取, 未储存在数据库中） (FileServer:{if $command_status eq 0}<span class="badge bg-red">Stop</span>{else/}Running{/if}) </span></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-vcenter text-nowrap datatable  table-hover">
+        <thead>
+          <tr>
+            <th>date_time</th>
+            <th>Total</th>
+            <th>is_pc</th>
+            <th>is_m</th>
+            <th>file</th>
+            <th>archive</th>
+            <th>down</th>
+            <th>delete</th>
+            <th>index</th>
+            <th>file_num</th>
+            <th>file_size</th>
+            
+            <th>ad_income</th>
+            <th>ad_views</th>
+            <th>ad_display</th>
+            <th>ad_hits</th>
+            <th>ad_rpm</th>
+            <th>ad_income</th>
+            <th>ad_ctr</th>
+            <th>ad_cpc</th>
+            <th>edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {volist name="list" id="vo" empty="" }
+          {if $vo.date_time eq $today_datetime and $page_num eq 1}
+            <tr>
+              <td><span class="text-muted">{$vo.date_time}</span></td>
+              <td>{$vo.all_click}</td>
+              <td>{$vo.is_pc}</td>
+              <td>{$vo.is_m}</td>
+              <td>{$vo.file_click}</td>
+              <td>{$vo.archive_click}</td>
+              <td>{$vo.start_click}</td>
+              <td>{$vo.delete_click}</td>
+              <td>{$vo.index_click}</td>
+              <td>{$vo.file_num}</td>
+              <td>{$vo.file_size}</td>
+
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          {/if}
+          {/volist}
+          {volist name="data_list" id="vo" empty="" }
+            <tr>
+              <td><span class="text-muted">{$vo.date_time}</span></td>
+              <td>{$vo.all_click}</td>
+              <td>{$vo.is_pc}</td>
+              <td>{$vo.is_m}</td>
+              <td>{$vo.file_click}</td>
+              <td>{$vo.archive_click}</td>
+              <td>{$vo.start_click}</td>
+              <td>{$vo.delete_click}</td>
+              <td>{$vo.index_click}</td>
+              <td>{$vo.file_num}</td>
+              <td>{$vo.file_size}</td>
+
+              <td>{$vo.ad_income}</td>
+              <td>{$vo.ad_views}</td>
+              <td>{$vo.ad_display}</td>
+              <td>{$vo.ad_hits}</td>
+              <td>${$vo.ad_rpm}</td>
+              <td>${$vo.ad_income}</td>
+              <td>{$vo.ad_ctr}%</td>
+              <td>${$vo.ad_cpc}</td>
+              <td><a href="/{$admin_path}/click/edit?id={$vo.id}">[=]</a></td>
+            </tr>
+          {/volist}
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer d-flex align-items-center">
+        {$data_list|raw}
+    </div>
+  </div>
+</div>
+
+{include file='footer'}

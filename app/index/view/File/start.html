@@ -1,0 +1,81 @@
+{include file="/header"/}
+
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-md-12 mt-50">
+            <div class="card">
+                {include file="/main_logo"/}
+                <div class="card-body">
+                    {if $black_extension_num eq 1}
+                    
+                    <p class="intro text-start text-muted bg-red text-red-fg mt-3 mb-3 p-2 fs-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm.01 13l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -8a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor"></path>
+                         </svg>
+                        
+                        This file is executable, be careful of viruses!</p>{/if}
+                    <h1 class="text-start text-blue mt-3 mb-3">
+                        {$file_data[0]['file_name']} ({$file_data[0]['file_size']})
+                    </h1>
+                    
+                    <p class="intro gray-font text-start text-muted">Your download will start automatically!</p>
+                    <p class="intro gray-font text-start text-muted">If the download does not start, <a href='{$cdn_server_data[0]["server_url"]}/download/{$file_data[0]["file_hash"]}?token={$file_token}&t={$file_timestamp}'><kbd>please click here</kbd></a>.</p>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-12 text-center mt-4">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar progress-bar-indeterminate" ></div>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="py-3 text-center mt-4">
+
+                        <a href="/" class="btn btn-outline-primary py-2 p-3 mx-auto fs-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"></path>
+                                <path d="M9 15l3 -3l3 3"></path>
+                                <path d="M12 12l0 9"></path>
+                             </svg>
+                            Upload own files
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        
+        {if $file_data[0]['display_ad'] eq 1}
+            {if $display_adsense_num eq 1}
+                <!--Google adsense code-->
+            {/if}
+        {/if}
+        
+    </div>
+</div>
+
+{if $is_spider eq 0}
+    <script>
+    $(document).ready(function(){
+        interval = setTimeout(function () {
+            $(".progress-bar").removeClass("progress-bar-indeterminate");
+            $(".progress-bar").css("width","100%");
+            var link = document.createElement('a');
+            link.setAttribute('href', '{$cdn_server_data[0]["server_url"]}/download/{$file_data[0]["file_hash"]}?token={$file_token}&t={$file_timestamp}');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, {$start_wait_time * 1000});
+        
+        
+    });
+    </script>
+{/if}
+{load href="/static/layer/layer.js" /}
+{include file="/file_footer"/}
