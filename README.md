@@ -70,11 +70,12 @@
 
 ## 版本更新说明
 
-[请查看UPDATE.md](https://github.com/PHPCODE123/file_gd/blob/master/UPDATE.md "Update.md")
+[请查看UPDATE.md](https://github.com/PHPCODE123/file_gd/blob/master/UPDATE.md "UPDATE")
 
 
 
 
 
 
-## CDN端请查看FILE_GD_CDN项目的配置教程
+## CDN端
+[FILE_GD_CDN](https://github.com/PHPCODE123/file_gd_cdn "FILE_GD_CDN")
