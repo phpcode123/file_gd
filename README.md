@@ -48,7 +48,7 @@
 
 # 文件定时清理监控
 
-* 此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘，天数可自定义：/file_gd/app/command/CleanExpiredFile.php
+* 此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘，天数可自定义，详情请阅读command控制器逻辑部分：/file_gd/app/command/CleanExpiredFile.php
 
 ~~~
 cd FILE_GD_PATH    //在linux终端切换到FILE_GD目录
