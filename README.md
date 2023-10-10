@@ -20,6 +20,7 @@
 
 * 本程序仅支持LNMP环境，其它环境未测试，建议安装使用linux宝塔。（MYSQL5.7 + PHP7.4 + REDIS）
 * 安装：主程序上传到web，在宝塔面板中绑定好主域名，然后修改/file_gd/config/app.php配置文件 
+
 ~~~
 
 /file_gd/config/app.php (改大写部分)
@@ -29,7 +30,7 @@
 ...
 ~~~
 
-
+* 且换到网站根目录，执行命令：composer upgrade && composer update
 
 
 * MYSQL:建立空数据库，恢复/file_gd/file_gd_20230924.sql文件，然后配置数据库文件
