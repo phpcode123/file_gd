@@ -19,10 +19,10 @@
 ## 安装使用
 
 * 本程序仅支持LNMP环境，其它环境未测试，建议安装使用linux宝塔。（MYSQL5.7 + PHP7.4 + REDIS）
-* 安装：将网站目录上传到web，然后在宝塔面板中绑定好主域名，然后是修改/file_gd/config/app.php配置文件 
-       网站配置文件：/file_gd/config/app.php (改大写字母配置部分)
+* 安装：主程序上传到web，在宝塔面板中绑定好主域名，然后修改/file_gd/config/app.php配置文件 
 ~~~
 
+/file_gd/config/app.php (改大写字母配置部分)
 ...
 'install_path'           => '/www/wwwroot/YOUR_SITE_PATH/',  
 'admin_url'              => 'https://YOUR_DOMAIN.COM/', 
@@ -32,10 +32,10 @@
 
 
 
-* MYSQL:建立空数据库，恢复根目录下的/file_gd/file_gd_20230924.sql文件，然后配置数据库文件
-       数据库配置文件：/file_gd/config/database.php, 并修改下列行(字母大写部分)
+* MYSQL:建立空数据库，恢复/file_gd/file_gd_20230924.sql文件，然后配置数据库文件
 ~~~
 
+/file_gd/config/database.php, 并修改下列行(字母大写部分)
 ...
 'database'        => env('database.database', 'YOUR_DATABASE'),
 'username'        => env('database.username', 'YOUR_MYSQL_USERNAME'),
@@ -46,6 +46,16 @@
 * 伪静态文件目录(只做了Nginx适配)：/file_gd/public/.htaccess  内容复制宝塔配置里即可
 * 后台地址：https://yoursite.com/admin.php/login/login  用户名：admin  密码：admin888 (默认用户名和密码)
 
+# 文件监控程序
+
+* 在linux终端切换到FILE_GD目录，执行命令
+
+~~~
+cd FILE_GD_PATH    //切换到FILE_GD目录
+screen -S clean_file   //screen 新建命令行窗口挂载
+php think clean_file   //此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘
+CTRL+A一起按，然后再按d键  //退出当前screen窗口，命令即会在后台自动运行，再次进入此窗口查看：screen -r clean_file
+~~~
 
 
 ## 其它问题
