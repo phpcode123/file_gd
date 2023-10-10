@@ -54,7 +54,7 @@
 cd FILE_GD_PATH    //切换到FILE_GD目录
 screen -S clean_file   //screen 新建命令行窗口挂载
 php think clean_file   //此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘
-CTRL+A一起按，然后再按d键  //退出当前screen窗口，命令即会在后台自动运行，再次进入此窗口查看：screen -r clean_file
+CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此窗口查看：screen -r clean_file
 ~~~
 
 
