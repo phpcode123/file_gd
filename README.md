@@ -33,6 +33,10 @@
 * 且换到网站根目录，执行命令：composer upgrade && composer update
 
 
+
+
+
+
 * MYSQL:建立空数据库，恢复/file_gd/file_gd_20230924.sql文件，然后配置数据库文件
 ~~~
 
