@@ -34,6 +34,12 @@ class File extends BaseController
             abort(404, "short_str error!");
         }
 
+        //------------------ black_country begin --------------------
+        if(preg_match("#china#i",$country)){
+            abort(404,"Unsupported for your region.");
+        }
+        //------------------ black_country end --------------------
+
 
         $file_data = Db::table("tp_file")->where("short_str",$short_str)->select();
         if(count($file_data) == 0){
@@ -214,6 +220,12 @@ class File extends BaseController
             abort(404, "short_str error!");
         }
 
+        //------------------ black_country begin --------------------
+        if(preg_match("#china#i",$country)){
+            abort(404,"Unsupported for your region.");
+        }
+        //------------------ black_country end --------------------
+
 
         $archive_data = Db::table("tp_file_archive")->where("short_str",$short_str)->select();
         if(count($archive_data) == 0){
@@ -360,7 +372,11 @@ class File extends BaseController
             abort(404, "short_str error!");
         }
 
-
+        //------------------ black_country begin --------------------
+        if(preg_match("#china#i",$country)){
+            abort(404,"Unsupported for your region.");
+        }
+        //------------------ black_country end --------------------
 
         #--------- 判断file_token与timestamp begin -----------------
         # 非蜘蛛用户禁止直接访问download页面

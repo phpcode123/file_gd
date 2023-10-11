@@ -36,6 +36,12 @@ class Index extends BaseController
         }
 
 
+        //------------------ black_country begin --------------------
+        if(preg_match("#china#i",$country)){
+            abort(404,"Unsupported for your region.");
+        }
+        //------------------ black_country end --------------------
+
         $user_index_redis_key = Config::get("app.redis_prefix")."index_".md5($user_agent.$user_ip);
         if(!Cache::has($user_index_redis_key)){
 
@@ -170,7 +176,11 @@ class Index extends BaseController
         //---------------- 判断当前是否是pc端 ----------------
         $is_pc = $otherclass->get_pc_status($user_agent);
 
-
+        //------------------ black_country begin --------------------
+        if(preg_match("#china#i",$country)){
+            abort(404,"Unsupported for your region.");
+        }
+        //------------------ black_country end --------------------
 
         // ---------------  时间戳验证码验证 begin  ------------------------------
         $hash_str = Request::param("hash_str") ?? "";
