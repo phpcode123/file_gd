@@ -55,7 +55,7 @@
 * 伪静态文件目录(只做了Nginx适配)：/file_gd/public/.htaccess  内容复制宝塔配置里即可
 * 后台地址：https://yoursite.com/admin.php/login/login  用户名：admin  密码：admin888 (默认用户名和密码)
 
-# 定时清理
+## 定时清理
 
 * 此命令程序会定时清理超过15天无人访问的文件，节约服务器磁盘，天数可自定义，详情请阅读command控制器逻辑部分：/file_gd/app/command/CleanExpiredFile.php
 
