@@ -6,7 +6,7 @@
 
 1、FILE.GD是仿workupload.com/anonfiles.com开发的文件分享管理程序，前后迭代两月有余，目前基本趋于稳定。
 
-2、软件设计开发时就较为着重于性能，代码精简，希望大家能习惯~~
+2、软件设计开发时就较为着重于整体效率，程序代码精简、性能强悍。
 
 3、软件系免费分享，项目也只适用于国外英文项目，请勿在国内瞎搞，不然自负法律责任！  
   
@@ -98,3 +98,17 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 ## CDN端
 [FILE_GD_CDN](https://github.com/PHPCODE123/file_gd_cdn "FILE_GD_CDN")
+
+
+## 项目截图
+* 前端    
+
+![](/public/static/images/1.png)
+![](/public/static/images/2.png)
+![](/public/static/images/3.png)  
+
+* 后端
+![](/public/static/images/4.png)
+![](/public/static/images/5.png)
+![](/public/static/images/6.png)
+![](/public/static/images/7.png)
