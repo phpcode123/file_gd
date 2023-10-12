@@ -103,12 +103,18 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 ## 项目截图
 * 前端    
 
-![](/public/static/images/1.png)
-![](/public/static/images/2.png)
+![](/public/static/images/1.png)  
+
+![](/public/static/images/2.png)  
+
 ![](/public/static/images/3.png)  
 
 * 后端
-![](/public/static/images/4.png)
-![](/public/static/images/5.png)
-![](/public/static/images/6.png)
+![](/public/static/images/4.png)  
+
+![](/public/static/images/5.png)  
+
+![](/public/static/images/6.png)  
+
 ![](/public/static/images/7.png)
+
