@@ -103,11 +103,8 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 ## 项目截图
 * 前台    
 
-![](/public/static/images/1.png)  
+![](/public/static/images/index.gif)   
 
-![](/public/static/images/2.png)  
-
-![](/public/static/images/3.png)  
 
 * 后台  
 
