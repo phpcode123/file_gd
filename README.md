@@ -11,7 +11,6 @@
 3、软件系免费分享，项目也只适用于国外英文项目，请勿在国内瞎搞，不然自负法律责任！  
   
 
-项目地址：[https://file.gd](https://file.gd/ "File_gd")
 
 
 ## 技术相关
@@ -101,6 +100,7 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 
 ## 项目截图
+* 项目地址：[https://file.gd](https://file.gd/ "File_gd")  
 
 * 前台    
 
