@@ -85,18 +85,7 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 后台地址：https://yoursite.com/loginasadad.php/login/login
 ~~~
-
-## 版本更新说明
-
-[请查看UPDATE.md](https://github.com/PHPCODE123/file_gd/blob/master/UPDATE.md "UPDATE")
-
-
-
-
-
-
-## CDN端
-[FILE_GD_CDN](https://github.com/PHPCODE123/file_gd_cdn "FILE_GD_CDN")
+  
 
 
 ## 项目截图
@@ -119,5 +108,20 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 ![](/public/static/images/6.png)  
 
-![](/public/static/images/7.png)
+![](/public/static/images/7.png)  
+
+  
+
+
+## CDN端
+[FILE_GD_CDN](https://github.com/PHPCODE123/file_gd_cdn "FILE_GD_CDN")  
+
+
+  
+  
+## 版本更新说明
+
+[请查看UPDATE.md](https://github.com/PHPCODE123/file_gd/blob/master/UPDATE.md "UPDATE")
+
+
 
