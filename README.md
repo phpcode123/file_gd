@@ -111,6 +111,10 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 ![](/public/static/images/4.png)  
 
+![](/public/static/images/8.png)  
+
+![](/public/static/images/9.png)  
+
 ![](/public/static/images/5.png)  
 
 ![](/public/static/images/6.png)  
