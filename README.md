@@ -113,12 +113,12 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
   
 
 
-## CDN端
+## CDN SERVER端
 [FILE_GD_CDN](https://github.com/PHPCODE123/file_gd_cdn "FILE_GD_CDN")  
 
 
   
-  
+
 ## 版本更新说明
 
 [请查看UPDATE.md](https://github.com/PHPCODE123/file_gd/blob/master/UPDATE.md "UPDATE")
