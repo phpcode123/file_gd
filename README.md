@@ -89,7 +89,6 @@ CTRL+A一起按，然后再按d键  //退出当前screen窗口，再次进入此
 
 
 ## 项目截图
-* 项目地址：[https://file.gd](https://file.gd/ "File_gd")  
 
 * 前台    
 
